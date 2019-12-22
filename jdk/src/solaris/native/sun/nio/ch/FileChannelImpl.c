@@ -83,13 +83,13 @@ Java_sun_nio_ch_FileChannelImpl_map0(JNIEnv *env, jobject this,
 
     if (prot == sun_nio_ch_FileChannelImpl_MAP_RO) {
         protections = PROT_READ;
-        flags = MAP_SHARED;
+        flags = MAP_SHARED | MAP_POPULATE;
     } else if (prot == sun_nio_ch_FileChannelImpl_MAP_RW) {
         protections = PROT_WRITE | PROT_READ;
-        flags = MAP_SHARED;
+        flags = MAP_SHARED | MAP_POPULATE;
     } else if (prot == sun_nio_ch_FileChannelImpl_MAP_PV) {
         protections =  PROT_WRITE | PROT_READ;
-        flags = MAP_PRIVATE;
+        flags = MAP_PRIVATE | MAP_POPULATE;
     }
 
     mapAddress = mmap64(
